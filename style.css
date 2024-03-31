@@ -1,0 +1,685 @@
+#game {
+	display: flex;
+	flex-direction: row;
+	padding: 10px;
+	flex-wrap: wrap;
+	gap: 10px;
+	box-sizing: border-box;
+	justify-content: start;
+	align-items: start;
+}
+
+#thebigbad {
+    position: fixed;
+    z-index: 10000;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background: black;
+    display: none;
+    box-shadow: inset 0px 0px 2500px #700;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+#thebigbad.goddammit {
+	display: flex;
+}
+
+#mymistakes {
+    flex: 1;
+    max-width: 1000px;
+    background: #111;
+    box-shadow: inset 0px 0px 25px #000;
+    border: 3px inset #111;
+    padding: 10px;
+    width: 100%;
+    font-family: monospace;
+    color: tomato;
+    user-select: all;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+
+@keyframes horizontal-shaking {
+	0% { transform: translateX(0) }
+	25% { transform: translateX(2px) }
+	50% { transform: translateX(-2px) }
+	75% { transform: translateX(2px) }
+	100% { transform: translateX(0) }
+}
+@keyframes vertical-shaking {
+	0% { translate: 0 0 }
+	25% { translate: 0 2px }
+	50% { translate: 0 -2px }
+	75% { translate: 0 2px }
+	100% { translate: 0 0 }
+}
+
+.shake {
+	text-shadow: 0px 0px 10px #f00;
+	animation: horizontal-shaking 0.1s infinite, vertical-shaking 0.15s infinite;
+}
+
+.hidden {
+	display: none;
+}
+
+.box {
+	background: #111;
+	box-shadow: inset 0px 0px 25px #000;
+	border: 3px inset #333;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+#end {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	background: black;
+	z-index: 200;
+	opacity: 0;
+	pointer-events: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#end.fadein {
+	animation: fadein 5s;
+	opacity: 1;
+	pointer-events: none;
+}
+
+@keyframes fadein {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes notif {
+	0% {
+		transform: translate(-450px);
+	}
+
+	20% {
+		transform: translate(0px);
+	}
+
+	80% {
+		transform: translate(0px);
+	}
+
+	100% {
+		transform: translate(-450px);
+	}
+}
+
+#notifs .column {
+	width: 400px;
+	margin: 0px;
+	transform: translate(-450px);
+	animation: notif 5s;
+	pointer-events: all;
+}
+
+#notifs {
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	z-index: 100;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	padding: 5px;
+	pointer-events: none;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
+	margin: 0px auto;
+	background: #111;
+	box-shadow: inset 0px 0px 25px #333;
+	border: 3px outset #333;
+	margin-top: 30px;
+	max-width: 500px;
+	padding: 10px 0px;
+	position: relative;
+	appearance: fieldset;
+}
+
+.column h2 {
+	margin: 0px;
+	padding: 0px 15px;
+}
+
+.column legend {
+	margin: 0px auto;
+}
+
+.column.disabled {
+	opacity: 0;
+	display: none;
+}
+
+#upgrades:has(legend:only-child) {
+	opacity: 0;
+}
+
+#upgrades {
+	transition: opacity 0.5s;
+}
+
+.upgrade {
+	background: #555;
+	box-shadow: inset 0px 0px 25px #aaa;
+	padding: 10px;
+	gap: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border: 3px outset #aaa;
+	width: 400px;
+	position: relative;
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+.upgrade * {
+	z-index: 1;
+}
+
+body {
+	background: #333;
+	color: white;
+	text-shadow: #000 0px 0 10px, #000 0px 0 2px;
+	user-select: none;
+	box-shadow: inset 0px 0px 2500px #000;
+	padding: 10px;
+	box-sizing: border-box;
+	padding-bottom: 100px;
+}
+
+.center {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.red {
+	color: #f77;
+}
+
+.green {
+	color: #7f7;
+}
+
+#minesweeper, #minesweeper > div {
+	display: flex;
+}
+
+#minesweeper {
+	flex-direction: column;
+}
+
+#minesweeper button {
+    width: 24px;
+    height: 24px;
+	position: relative;
+}
+
+#minesweeper button.pressed {
+	transition: unset;
+	background: transparent;
+	border: 3px inset #9997;
+}
+
+#minesweeper button.pressed::before, #minesweeper button.flagged::before {
+	content: " ";
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+}
+
+#minesweeper button.pressed._1::before {
+	content: "1";
+	color: #fff;
+}
+#minesweeper button.pressed._2::before {
+	content: "2";
+	color: #fdd;
+}
+#minesweeper button.pressed._3::before {
+	content: "3";
+	color: #fbb;
+}
+#minesweeper button.pressed._4::before {
+	content: "4";
+	color: #f99;
+}
+#minesweeper button.pressed._5::before {
+	content: "5";
+	color: #f77;
+}
+#minesweeper button.pressed._6::before {
+	content: "6";
+	color: #f55;
+}
+#minesweeper button.pressed._7::before {
+	content: "7";
+	color: #f44;
+}
+#minesweeper button.pressed._8::before {
+	content: "8";
+	color: #f33;
+}
+#minesweeper button.pressed.bomb {
+	background: #f33;
+	border: 3px outset #f33;
+}
+#minesweeper button.flagged::before {
+	content: "X";
+	color: white;
+}
+#minesweeper button.flagged {
+	border: 3px outset #f33;
+}
+.research {
+	width: 400px;
+	display: flex;
+	justify-content: space-between;
+}
+
+progress {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 250px;
+	height: 16px;
+}
+
+progress::-webkit-progress-bar {
+	background-color: transparent;
+	border: 1px solid #777;
+	border-radius: 2px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  background-image:
+	   -webkit-linear-gradient(-45deg, 
+	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
+	                           rgba(0,0, 0, .1) 66%, transparent 66%),
+	   -webkit-linear-gradient(top, 
+	                           rgba(255, 255, 255, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left, #07f, #07f);
+
+    border-radius: 2px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+.loading {
+	z-index: 100;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+
+	background: #333;
+	box-shadow: inset 0px 0px 2500px #000;
+	color: white;
+	text-shadow: #000 0px 0 10px, #000 0px 0 2px;
+}
+
+#tip {
+	z-index: 100;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+
+	color: white;
+	text-shadow: #000 0px 0 10px, #000 0px 0 2px;
+	animation: tipdisplay 10s;
+	pointer-events: none;
+}
+
+@keyframes tipdisplay {
+	0% {
+		opacity: 0;
+	}
+
+	90% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 100%;
+	}
+}
+
+body,
+html {
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	margin: 0px;
+	color-scheme: dark;
+}
+
+button {
+	background: #ddd7;
+	border-color: #fff;
+	border-width: 3px;
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+	text-shadow: #000 0px 0 2px, #000 0px 0 2px;
+}
+
+button:disabled {
+	cursor: default;
+	background: #8887;
+	border-color: #9f9f9f;
+	color: #aaa;
+	transition: all 0s;
+}
+
+button {
+	transition: all 0.5s;
+}
+
+canvas {
+	background: #111;
+	border: 3px inset #333;
+}
+
+#bignumber {
+	cursor: pointer;
+	text-align: center;
+}
+
+#bignumber:hover {
+	background: #fff2;
+}
+
+.strong {
+	font-weight: bold;
+}
+
+#bignumber {
+	font-size: 40px;
+	line-height: 30px;
+	margin: 0px;
+	padding: 20px 0px;
+	overflow-wrap: anywhere;
+	position: sticky;
+	top: 5px;
+	z-index: 10;
+	transition: background 0.5s, outline 0.25s, box-shadow 0.5s;
+	outline: 0px outset #333;
+}
+
+#bignumber .text {
+	transition: scale 0.3s;
+	display: block;
+}
+
+#bignumber:active .text,
+#bignumber.press .text {
+	scale: 0.75;
+	transition: scale 0.05s;
+}
+
+body:not([data-scroll="0"]) #bignumber {
+	background: #000;
+	box-shadow: inset 0px 0px 50px #333, 0px 0px 50px #000;
+	outline: 3px outset #333;
+}
+
+@font-face {
+	font-family: Candara-Hosted;
+	src: url(Candara.ttf);
+}
+
+@font-face {
+	font-family: Webdings;
+	src: url(Webdings-Regular.ttf);
+}
+
+* {
+	font-family: Candara, Candara-Hosted, Georgia;
+	touch-action: manipulation;
+}
+
+.ws {
+	white-space: pre-wrap;
+}
+
+.dialogue {
+	position: absolute;
+	background: #0007;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 200;
+}
+
+.dialogue .column {
+	width: 500px;
+	padding: 20px;
+	box-sizing: border-box;
+	text-align: left;
+	max-height: 80%;
+}
+
+.dialogue .column .scroll {
+	overflow-y: auto;
+	width: 100%;
+}
+
+.column hr {
+	border: none;
+	border-bottom: 1px solid #777;
+}
+
+.gamepanel {
+	width: 300px;
+	border: 3px outset #888;
+	background: #777;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+@keyframes particle {
+	0% {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateY(-30px);
+		opacity: 0;
+	}
+}
+
+.particle {
+	animation: particle 0.5s;
+	opacity: 0;
+	position: absolute;
+	font-weight: bold;
+	pointer-events: none;
+	font-size: 2em;
+	z-index: 99;
+}
+
+#ribbon .row {
+	display: flex;
+	gap: 15px;
+}
+
+#ribbon button {
+	background: #777;
+	pointer-events: all;
+}
+
+#ribbon {
+	display: flex;
+	justify-content: space-between;
+	position: fixed;
+	right: 15px;
+	left: 15px;
+	bottom: 15px;
+	z-index: 99;
+	pointer-events: none;
+}
+
+#plots {
+	border: 3px inset #333;
+	padding: 10px;
+	width: 400px;
+	background-color: #333;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.plot {
+	position: relative;
+	width: 50px;
+	height: 100px;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	padding-bottom: 15px;
+	box-sizing: border-box;
+	font-size: 2.2em;
+	line-height: 0.5em;
+	cursor: pointer;
+}
+
+.none {
+	display: none;
+}
+
+.plot .stem {
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	position: relative;
+}
+
+.plot::before {
+	content: 'Ù';
+	font-family: Webdings;
+	text-shadow: 0px 0px #333, 0px -3px black, 0px -5px #999, 0px -10px 5px #0007;
+	color: transparent;
+	text-align: center;
+	line-height: 200px;
+	font-size: 70px;
+	display: block;
+	position: absolute;
+	left: -50%;
+	right: 50%;
+	top: 10px;
+	width: 200%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1;
+}
+
+.plot::after {
+	content: ' ';
+	display: block;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 3;
+}
+
+.plot:hover::after {
+	background: #fff3;
+}
+
+.plot:has(.stem[data-index="6"]) {
+	color: #764;
+}
+
+.smaller {
+	font-size: 0.5em;
+}
+
+.stem>.stem {
+	z-index: 5;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	bottom: 100%;
+}
+
+.stem>.stem[data-rand="1"] {
+	translate: -5px 0px;
+	rotate: -25deg;
+}
+
+.stem>.stem[data-rand="-1"] {
+	translate: 5px 0px;
+	rotate: 25deg;
+}
+
+.stem>.stem[data-rand="2"] {
+	translate: -15px 0px;
+	rotate: -60deg;
+}
+
+.stem>.stem[data-rand="-2"] {
+	translate: 15px 0px;
+	rotate: 60deg;
+}
+
+.gold {
+	border: 3px outset #3a3;
+	box-shadow: inset 0px 0px 25px #0f03;
+}
+
+.redachievement {
+	border: 3px outset #a33;
+	box-shadow: inset 0px 0px 25px #f003;
+}

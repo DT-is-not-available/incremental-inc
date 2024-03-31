@@ -1,0 +1,16 @@
+This update brings about many major changes you won't notice, such as:
+- Reworking almost all of the underlying code
+- Moving everything from being in one file to lots of files
+- Reworking the upgrades system entirely from scratch
+- Lots of bugfixes
+This update also bring the following changes you will notice:
+- This changelog
+- One achievement
+
+---
+# Warning!
+Over the next few days I will continue to change things with how the game works under the hood. I will try to preserve any current save files, however breaking is bound to happen. Given this game is still in it's prototype stage, expect these types of changes to happen! I can't guarentee everything will continue to work all the time at the moment.
+
+---
+Happy incrementing!
+,deet

@@ -1,0 +1,13 @@
+Brand new changes means brand new changelog!
+- Farm plants now grow in a random direction
+- Pausing the game is now a feature, and displays a pause screen
+- Changed the cancel button text on the reset confirm window
+- Added a border and changed the background to the replicator's display screen
+
+---
+# Warning!
+Over the next few days I will continue to change things with how the game works under the hood. I will try to preserve any current save files, however breaking is bound to happen. Given this game is still in it's prototype stage, expect these types of changes to happen! I can't guarentee everything will continue to work all the time at the moment.
+
+---
+Happy incrementing!
+,deet

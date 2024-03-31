@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=580" />
+	<title>Incremental Inc.</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link rel="manifest" href="manifest.json">
+	<link rel="icon" type="image/x-icon" href="/icon-128.png">
+	<script src="loopify.js"></script>
+</head>
+
+<body data-scroll="0">
+	<div id="end">There's nothing to do now</div>
+	<div id="ribbon">
+		<span><span id="ver"></span> <strong>active</strong></span>
+		<div class="row"><button id="achievements">Achievements</button><button id="pause">Pause</button><button id="reset">Reset</button></div>
+	</div>
+	<div id="notifs"></div>
+	<div id="loading" class="loading">
+		<h1>Loading...</h1>
+	</div>
+	<h1 id="bignumber"><span class="text">0</span></h1>
+	<div>
+		<fieldset class="column disabled" id="automation">
+			<legend><h2>Production</h2></legend>
+			<div class="strong">Estimated <span id="persecond">0</span>/s</div>
+			<div class="strong">Generators - <span id="autocount">0</span></div>
+			<div>Cost: <span id="autocost">30</span></div>
+			<div><button id="autobuy">Buy Generator</button> <button id="autosell">Sell Generator</button></div>
+		</fieldset>
+		<fieldset class="column disabled" id="replicator">
+			<legend><h2>Replicator</h2></legend>
+			<div>Value: <span id="replcost">0</span></div>
+			<canvas id="replicator-canvas" width=300 height=150></canvas>
+			<canvas id="replicator-bar-canvas" width=300 height=10 class="hidden"></canvas>
+			<div><button id="replclick">Replicate</button></div>
+		</fieldset>
+		<fieldset class="column disabled" id="farms">
+			<legend><h2>Farm</h2></legend>
+			<div>Click on an empty plot to plant a seed</div>
+			<div>Click a plant to harvest it</div>
+			<div class="strong">Plots - <span id="farmcount">0</span></div>
+			<div id="plots"></div>
+			<div>Plot Cost: <span id="farmcost">0</span></div>
+			<div><button id="farmbuy">Buy Plot</button></div>
+		</fieldset>
+		<fieldset class="column disabled" id="research">
+			<legend><h2>Research Center</h2></legend>
+			<big class="strong"><span id="researchpoints">0</span> kp</big>
+			<div>Gain: <span class="strong green" id="gain">100</span>%, Loss: <span class="strong red" id="loss">0</span>%</div>
+			<div>Left click to uncover, right click to flag</div>
+			<div id="minesweeper"></div>
+			<div><button id="plusgain">Add Gain</button> <button id="plusloss">Add Loss</button></div>
+			<div>Projects</div>
+			<div id="researchprojects"></div>
+		</fieldset>
+		<fieldset class="column disabled" id="particles">
+			<legend><h2>Particle Simulator</h2></legend>
+			<div>Particles: <span id="partcount">0</span></div>
+			<div>Collision Value: <span id="partval">0</span></div>
+			<canvas id="particles-canvas" width=300 height=150></canvas>
+			<div>Particle Cost <span id="partcost">0</span></div>
+			<div><button id="partbuy">Buy Particle</button></div>
+			<div><button id="partlaunch">Launch Particle</button></div>
+		</fieldset>
+		<fieldset class="column" id="upgrades">
+			<legend><h2>Innovations</h2></legend>
+		</fieldset>
+	</div>
+	<div id="thebigbad">
+		<h1>The Big Bad Error Screen</h1>
+		<p>If you are seeing this, something unexpected happened. Copy this and send it to the developer on the <a href="https://discord.gg/X3bPan9U4G">discord</a></p>
+		<pre id="mymistakes"></pre>
+		<button id="copyit">Copy</button>
+	</div>
+	<div id="tip"><span>Press SPACE or tap the number</span></div>
+	<script src="src/preloader.js"></script>
+</body>
+
+</html>
